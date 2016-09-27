@@ -23,7 +23,7 @@
     <description></description>
     <display-name>NewSchedule</display-name>
     <servlet-name>NewSchedule</servlet-name>
-    <servlet-class>NewSchedule1</servlet-class>
+    <servlet-class>NewSchedule2</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewSchedule</servlet-name>
