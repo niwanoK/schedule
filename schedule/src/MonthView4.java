@@ -153,7 +153,7 @@ public class MonthView4 extends HttpServlet{
                 sb.append(calendarDay[i]);
 
                 sb.append("\">");
-                sb.append("<img src=\"./img/memo.png\" width=\"14\" height=\"16\">");
+                sb.append("<img src=\"./img/memo.jpg\" width=\"14\" height=\"16\">");
                 sb.append("</a>");
                 sb.append("</td>");
             }
