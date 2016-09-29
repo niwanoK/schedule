@@ -29,4 +29,24 @@
     <servlet-name>NewSchedule</servlet-name>
     <url-pattern>/NewSchedule</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CallNewSchedulePage</display-name>
+    <servlet-name>CallNewSchedulePage</servlet-name>
+    <servlet-class>CallNewSchedulePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CallNewSchedulePage</servlet-name>
+    <url-pattern>/CallNewSchedulePage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CallMonthViewPage</display-name>
+    <servlet-name>CallMonthViewPage</servlet-name>
+    <servlet-class>CallMonthViewPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CallMonthViewPage</servlet-name>
+    <url-pattern>/CallMonthViewPage</url-pattern>
+  </servlet-mapping>
 </web-app>

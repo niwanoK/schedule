@@ -88,41 +88,32 @@
 
         </script>
 <%
-    int year;
-    int month;
-    int day;
+    int year;    /* 年 */
+    int month;   /* 月 */
+    int day;     /* 日 */
 
+    /* 年データの取得(値が取得できない場合は無効値を代入) */
     String param = request.getParameter("YEAR");
     if (param == null || param.length() == 0){
         year = -999;
     }else{
-        try{
-            year = Integer.parseInt(param);
-        }catch (NumberFormatException e){
-            year = -999;
-        }
+        year = Integer.parseInt(param);
     }
 
+    /* 月データの取得(値が取得できない場合は無効値を代入) */
     param = request.getParameter("MONTH");
     if (param == null || param.length() == 0){
         month = -999;
     }else{
-        try{
-            month = Integer.parseInt(param);
-        }catch (NumberFormatException e){
-            month = -999;
-        }
+        month = Integer.parseInt(param);
     }
 
+    /* 日データの取得(値が取得できない場合は無効値を代入) */
     param = request.getParameter("DAY");
     if (param == null || param.length() == 0){
         day = -999;
     }else{
-        try{
-            day = Integer.parseInt(param);
-        }catch (NumberFormatException e){
-            day = -999;
-        }
+        day = Integer.parseInt(param);
     }
 
     /* パラメータが指定されていない場合は本日の日付を設定 */
@@ -135,9 +126,11 @@
 %>
         <p>
             スケジュール登録
+            <!-- カレンダー表示画面へのリンクを作成 -->
             [<a href="/schedule/MonthView.jsp?YEAR=<%= year %>&MONTH=<%= month %>">カレンダーへ戻る</a>]
         </p>
         <div id="contents">
+            <!-- (左側)時刻毎の予定表を作成 -->
             <div id="left">
                 <table class="sche">
                     <tr><td class="top" style="width:80px">時刻</td><td class="top" style="width:300px">予定</td></tr>
@@ -191,13 +184,15 @@
                     <tr><td class="timeb"></td><td class="contentsb"></td></tr>
                 </table>
             </div>
+            <!-- (右側)スケジュール表示/登録欄を作成 -->
             <div id="right">
                 <form method="post" action="">
-                 <table>
-                     <tr>
-                         <td nowrap>日付</td>
+                    <table>
+                        <tr>
+                            <!-- 日付表示/選択欄を作成 -->
+                            <td nowrap>日付</td>
                             <td>
-                             <select name="YEAR">
+                                <select name="YEAR">
 <%for (int i = 2005 ; i <= 2030 ; i++){%>
                                     <option value="<%= i %>"
 <%  if (i == year){%>
@@ -233,6 +228,7 @@ int monthLastDay = calendar.get(Calendar.DATE);
                             </td>
                         </tr>
                         <tr>
+                            <!-- 時刻表示/選択欄を作成 -->
                             <td nowrap>時刻</td>
                             <td>
                                 <select name="SHOUR">
@@ -242,7 +238,7 @@ int monthLastDay = calendar.get(Calendar.DATE);
 <%}%>
                                 </select>
                                 <select name="SMINUTE">
-                                    <option value="0">00分
+                                     <option value="0">00分
                                     <option value="30">30分
                                 </select>
                                     --
@@ -259,18 +255,20 @@ int monthLastDay = calendar.get(Calendar.DATE);
                             </td>
                         </tr>
                         <tr>
+                            <!-- 予定表示/記入欄を作成 -->
                             <td nowrap>予定</td>
-                            <td>
-                                <input type="text" name="PLAN" value="" size="30" maxlength="100">
-                            </td>
+                            <td><input type="text" name="PLAN" value="" size="30" maxlength="100"></td>
                         </tr>
                         <tr>
+                            <!-- メモ表示/記入欄を作成 -->
                             <td valign="top" nowrap>メモ</td>
                             <td><textarea name="MEMO" cols="30" rows="10" wrap="virtual"></textarea></td>
                         </tr>
                     </table>
                     <p>
+                        <!-- 登録ボタンを作成 -->
                         <input type="submit" name="Register" value="登録する">
+                        <!-- リセットボタンを作成 -->
                         <input type="reset" value="入力し直す">
                     <p>
                 </form>
