@@ -138,10 +138,10 @@
 %>
         <p>
             <!-- 前月/翌月のリンクを作成 -->
-            <a href="/schedule/CallMonthViewPage?YEAR=<%= year %>&MONTH=<%= month - 1 %>"><span class="small">前月</span></a>
+            <a href="/schedule/MonthView?YEAR=<%= year %>&MONTH=<%= month - 1 %>"><span class="small">前月</span></a>
                 <%= year %>年
                 <%= month + 1 %>月
-            <a href="/schedule/CallMonthViewPage?YEAR=<%= year %>&MONTH=<%= month + 1 %>"><span class="small">翌月</span></a>
+            <a href="/schedule/MonthView?YEAR=<%= year %>&MONTH=<%= month + 1 %>"><span class="small">翌月</span></a>
         </p>
         <!-- スケジュール表(大枠の作成) -->
         <table>
@@ -179,7 +179,7 @@
 <%        }else{%>
                 <!-- 前月及び翌月の箇所にはアイコンを表示する -->
                 <td class="sche">
-                    <a href="/schedule/CallNewSchedulePage?YEAR=<%= year%>&MONTH=<%= month%>&DAY=<%= calendarDay[j]%>">
+                    <a href="/schedule/NewSchedule?YEAR=<%= year%>&MONTH=<%= month%>&DAY=<%= calendarDay[j]%>">
                         <img src="./img/memo.jpg" width="14" height="16">
                     </a>
 <%        }%>
@@ -189,7 +189,6 @@
             </tr>
 <%}%>
         </table>
-        <!-- トップページへ戻るリンクを作成する -->
-        <a href="/schedule/top.jsp"><span class="small">トップヘ戻る</span></a>
+        <p><a href="/schedule/top.jsp">トップヘ戻る</a></p>
     </body>
 </html>
