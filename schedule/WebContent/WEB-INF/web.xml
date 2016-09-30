@@ -13,7 +13,7 @@
     <description></description>
     <display-name>MonthView</display-name>
     <servlet-name>MonthView</servlet-name>
-    <servlet-class>MonthView4</servlet-class>
+    <servlet-class>MonthView</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MonthView</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>NewSchedule</display-name>
     <servlet-name>NewSchedule</servlet-name>
-    <servlet-class>NewSchedule2</servlet-class>
+    <servlet-class>NewSchedule</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NewSchedule</servlet-name>
@@ -31,22 +31,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CallNewSchedulePage</display-name>
-    <servlet-name>CallNewSchedulePage</servlet-name>
-    <servlet-class>CallNewSchedulePage</servlet-class>
+    <display-name>ScheduleDataInsert</display-name>
+    <servlet-name>ScheduleDataInsert</servlet-name>
+    <servlet-class>ScheduleDataInsert</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CallNewSchedulePage</servlet-name>
-    <url-pattern>/CallNewSchedulePage</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CallMonthViewPage</display-name>
-    <servlet-name>CallMonthViewPage</servlet-name>
-    <servlet-class>CallMonthViewPage</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CallMonthViewPage</servlet-name>
-    <url-pattern>/CallMonthViewPage</url-pattern>
+    <servlet-name>ScheduleDataInsert</servlet-name>
+    <url-pattern>/ScheduleDataInsert</url-pattern>
   </servlet-mapping>
 </web-app>

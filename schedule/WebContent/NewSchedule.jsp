@@ -123,70 +123,69 @@
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DATE);
     }
+
+    String[] scheduleArray;
+    scheduleArray = (String[])request.getAttribute("SCHEDULE");
+    if (scheduleArray == null) {
+        scheduleArray = new String[49];
+        for (int i =0; i < scheduleArray.length; i++) {
+            scheduleArray[i] = "";
+        }
+    }
+
+    int[] widthArray;
+    widthArray = (int[])request.getAttribute("WIDTH");
+    if (widthArray == null) {
+    	widthArray = new int[49];
+        for (int i =0; i < widthArray.length; i++) {
+        	widthArray[i] = 0;
+        }
+    }
 %>
         <p>
             スケジュール登録
             <!-- カレンダー表示画面へのリンクを作成 -->
-            [<a href="/schedule/MonthView.jsp?YEAR=<%= year %>&MONTH=<%= month %>">カレンダーへ戻る</a>]
+            [<a href="/schedule/MonthView?YEAR=<%= year %>&MONTH=<%= month %>">カレンダーへ戻る</a>]
         </p>
         <div id="contents">
             <!-- (左側)時刻毎の予定表を作成 -->
             <div id="left">
                 <table class="sche">
                     <tr><td class="top" style="width:80px">時刻</td><td class="top" style="width:300px">予定</td></tr>
-                    <tr><td class="time">00:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">01:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">02:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">03:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">04:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">05:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">06:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">07:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">08:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">09:00</td><td class="ex" rowspan="3"></td></tr>
-                    <tr><td class="timeb"></td></tr>
-                    <tr><td class="time">10:00</td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">11:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">12:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">13:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">14:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">15:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">16:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">17:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">18:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">19:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">20:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">21:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">22:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
-                    <tr><td class="time">23:00</td><td class="contents"></td></tr>
-                    <tr><td class="timeb"></td><td class="contentsb"></td></tr>
+                    <tr>
+                        <td class="timeb">未定</td>
+                        <td class="contentsb">
+<%if (widthArray[0] == 1){%>
+                        <%= scheduleArray[0]%>
+<%}%>
+                        </td>
+                    </tr>
+<%for (int i = 1 ; i < 49 ; i++){
+      if (i % 2 == 1){%>
+                    <tr>
+                        <td class="time"><%= i / 2 %>:00</td>
+<%    } else {%>
+                    <tr>
+                        <td class="timeb"></td>
+<%    }
+      if (widthArray[i] != 0){
+    	  if (widthArray[i] != -1){%>
+    	                <td class="ex" rowspan="<%= widthArray[i] %>"><%= scheduleArray[i] %>
+<%        }
+      }else {
+          if (i % 2 == 1){%>
+                        <td class="contents"></td>
+<%        } else {%>
+                        <td class="contentsb"></td>
+<%        }
+      }%>
+                    </tr>
+<%}%>
                 </table>
             </div>
             <!-- (右側)スケジュール表示/登録欄を作成 -->
             <div id="right">
-                <form method="post" action="">
+                <form method="post" action="/schedule/ScheduleDataInsert">
                     <table>
                         <tr>
                             <!-- 日付表示/選択欄を作成 -->

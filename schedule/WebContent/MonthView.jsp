@@ -101,6 +101,15 @@
         }
     }
 
+    String[] paramArray = new String[31];
+    paramArray = (String[])request.getAttribute("SCHEDULEDATA");
+    if (paramArray == null) {
+    	paramArray = new String[31];
+    	for (int i =0; i < paramArray.length; i++) {
+    		paramArray[i] = "";
+    	}
+    }
+
     /* ---日付データを配列に格納--- */
     Calendar calendar = Calendar.getInstance();
     int nowWeekCount = 0;
@@ -182,7 +191,12 @@
                     <a href="/schedule/NewSchedule?YEAR=<%= year%>&MONTH=<%= month%>&DAY=<%= calendarDay[j]%>">
                         <img src="./img/memo.jpg" width="14" height="16">
                     </a>
-<%        }%>
+                    <span class="small">
+<%            if (paramArray[calendarDay[j]] != null && paramArray[calendarDay[j]] != "" && calendarDay[j] <= thisMonthlastDay){%>
+                    <%= paramArray[calendarDay[j]]%>
+<%            }
+          }%>
+                    </span>
                 </td>
 <%    }%>
 
